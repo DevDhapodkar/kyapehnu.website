@@ -171,8 +171,8 @@ export function ScrollytellingHero({ className = '' }: ScrollytellingHeroProps) 
               {/* Primary High-Res Dark Studio Model Image */}
               <div className="relative w-full h-full bg-[#050508]">
                 <Image
-                  src="/images/hero-model.jpg"
-                  alt="Kya Pehnu Fashion Model"
+                  src="/images/nagpur-hero-model-v2.jpg"
+                  alt="Kya Pehnu Nagpur Fashion Model"
                   fill
                   sizes="(max-width: 768px) 90vw, 45vw"
                   priority
@@ -185,8 +185,8 @@ export function ScrollytellingHero({ className = '' }: ScrollytellingHeroProps) 
                   style={{ opacity: imageAltOpacity }}
                 >
                   <Image
-                    src="/images/hero-model-alt.jpg"
-                    alt="Kya Pehnu Alternate Outfit Look"
+                    src="/images/nagpur-hero-model-alt-v2.jpg"
+                    alt="Kya Pehnu Nagpur Alternate Outfit Look"
                     fill
                     sizes="(max-width: 768px) 90vw, 45vw"
                     className="object-cover object-center"
