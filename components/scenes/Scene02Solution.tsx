@@ -1,5 +1,6 @@
 'use client';
 import { useRef, useState, useEffect } from 'react';
+import Image from 'next/image';
 import { useApp } from '@/components/providers/AppProvider';
 import { SplitText } from '@/components/ui/SplitText';
 import { ScrollTrigger } from '@/lib/gsap';
@@ -28,34 +29,55 @@ export function Scene02Solution() {
 
   const mins = Math.floor(seconds / 60);
   const secs = seconds % 60;
+  const mapSrc = isLight
+    ? '/images/nagpur-map-carrara.webp'
+    : '/images/nagpur-map-midnight.webp';
 
   return (
     <section
       ref={ref}
-      className={`min-h-screen flex flex-col items-center justify-center px-5 sm:px-8 py-16 sm:py-24 text-center transition-colors duration-400 ${
+      className={`relative min-h-screen flex flex-col items-center justify-center px-5 sm:px-8 py-16 sm:py-24 text-center overflow-hidden transition-colors duration-400 ${
         isLight ? 'bg-white text-neutral-900' : 'bg-black text-white'
       }`}
     >
-      <p className={`text-xs tracking-[0.5em] font-mono mb-6 sm:mb-8 ${isLight ? 'text-purple-700 font-semibold' : 'text-purple-300'}`}>
-        02 / THE SOLUTION
-      </p>
-      <SplitText
-        text="SO WE MADE IT FAST. REALLY FAST."
-        className={`text-3xl sm:text-5xl lg:text-6xl font-thin tracking-tight leading-none mb-4 ${
-          isLight ? 'text-neutral-950' : 'text-white'
-        }`}
-      />
-      <p className={`text-lg sm:text-2xl mb-10 sm:mb-16 tracking-wide font-mono ${isLight ? 'text-neutral-600' : 'text-white/60'}`}>
-        UNDER 60 MINUTES IN NAGPUR.
-      </p>
-      <div className={`font-mono text-6xl sm:text-8xl md:text-9xl tracking-[0.1em] sm:tracking-[0.2em] tabular-nums font-bold ${
-        isLight ? 'text-neutral-900' : 'text-white'
-      }`}>
-        {pad(mins)}:{pad(secs)}
+      {/* Subtle Nagpur Topographic Map Texture Backdrop */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10 sm:opacity-15 mix-blend-luminosity z-0">
+        <Image
+          src={mapSrc}
+          alt="Nagpur Topographic Texture"
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div className={`absolute inset-0 ${
+          isLight
+            ? 'bg-radial from-transparent via-white/50 to-white'
+            : 'bg-radial from-transparent via-black/50 to-black'
+        }`} />
       </div>
-      <p className={`text-[10px] sm:text-xs tracking-widest font-mono mt-8 ${isLight ? 'text-neutral-400' : 'text-white/40'}`}>
-        SCROLL TO WATCH THE CLOCK RUN
-      </p>
+
+      <div className="relative z-10">
+        <p className={`text-xs tracking-[0.5em] font-mono mb-6 sm:mb-8 ${isLight ? 'text-purple-700 font-semibold' : 'text-purple-300'}`}>
+          02 / THE SOLUTION
+        </p>
+        <SplitText
+          text="SO WE MADE IT FAST. REALLY FAST."
+          className={`text-3xl sm:text-5xl lg:text-6xl font-thin tracking-tight leading-none mb-4 ${
+            isLight ? 'text-neutral-950' : 'text-white'
+          }`}
+        />
+        <p className={`text-lg sm:text-2xl mb-10 sm:mb-16 tracking-wide font-mono ${isLight ? 'text-neutral-600' : 'text-white/60'}`}>
+          UNDER 60 MINUTES IN NAGPUR.
+        </p>
+        <div className={`font-mono text-6xl sm:text-8xl md:text-9xl tracking-[0.1em] sm:tracking-[0.2em] tabular-nums font-bold ${
+          isLight ? 'text-neutral-900' : 'text-white'
+        }`}>
+          {pad(mins)}:{pad(secs)}
+        </div>
+        <p className={`text-[10px] sm:text-xs tracking-widest font-mono mt-8 ${isLight ? 'text-neutral-400' : 'text-white/40'}`}>
+          SCROLL TO WATCH THE CLOCK RUN
+        </p>
+      </div>
     </section>
   );
 }
