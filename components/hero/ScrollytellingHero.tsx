@@ -106,17 +106,17 @@ export function ScrollytellingHero({ className = '' }: ScrollytellingHeroProps) 
         {/* ── Main layout: stacked on mobile, side-by-side on desktop ── */}
         <div className="relative z-10 w-full max-w-7xl mx-auto h-full flex flex-col lg:grid lg:grid-cols-12 lg:gap-12 items-center">
 
-          {/* Image card — on mobile it sits at the top, smaller */}
-          <div className="lg:col-span-6 flex justify-center lg:order-2 flex-shrink-0 mb-4 lg:mb-0">
+          {/* Image card — prominent on mobile, side-by-side on desktop */}
+          <div className="lg:col-span-6 flex justify-center lg:order-2 flex-shrink-0 mb-3 lg:mb-0">
             <motion.div
               className={`relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl ${
                 isLight ? 'border-2 border-purple-500/20' : 'border border-purple-400/30'
               }`}
               style={{
-                width: isMobile ? '55vw' : '100%',
-                maxWidth: isMobile ? '220px' : '28rem',
+                width: isMobile ? '70vw' : '100%',
+                maxWidth: isMobile ? '320px' : '28rem',
                 aspectRatio: '3/4',
-                maxHeight: isMobile ? '35vh' : '70vh',
+                maxHeight: isMobile ? '42vh' : '70vh',
                 scale: modelScale,
                 rotateY: modelRotateY,
                 rotateX: modelRotateX,
@@ -124,9 +124,9 @@ export function ScrollytellingHero({ className = '' }: ScrollytellingHeroProps) 
               }}
             >
               <div className="relative w-full h-full bg-neutral-900">
-                <Image src="/images/nagpur-indian-model-v4.jpg" alt="Kya Pehnu Fashion Model" fill sizes={isMobile ? '55vw' : '45vw'} priority className="object-cover object-center" />
+                <Image src="/images/nagpur-indian-model-v4.jpg" alt="Kya Pehnu Fashion Model" fill sizes={isMobile ? '70vw' : '45vw'} priority className="object-cover object-center" />
                 <motion.div className="absolute inset-0 z-10" style={{ opacity: imageAltOpacity }}>
-                  <Image src="/images/nagpur-indian-outfit-v4.jpg" alt="Kya Pehnu Fashion Outfit" fill sizes={isMobile ? '55vw' : '45vw'} className="object-cover object-center" />
+                  <Image src="/images/nagpur-indian-outfit-v4.jpg" alt="Kya Pehnu Fashion Outfit" fill sizes={isMobile ? '70vw' : '45vw'} className="object-cover object-center" />
                 </motion.div>
                 <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/50 via-transparent to-black/15 opacity-60" />
               </div>
@@ -153,7 +153,7 @@ export function ScrollytellingHero({ className = '' }: ScrollytellingHeroProps) 
                 <p className={`text-[10px] sm:text-xs tracking-[0.3em] sm:tracking-[0.4em] font-mono mb-1.5 sm:mb-3 uppercase ${isLight ? 'text-purple-700 font-semibold' : 'text-purple-300'}`}>01 / THE SOLUTION</p>
                 <h1 className={`text-2xl sm:text-5xl md:text-6xl font-thin tracking-tight leading-none mb-2 sm:mb-6 ${isLight ? 'text-neutral-950' : 'text-white'}`}>YOUR LOOK.<br />60 MINUTES.</h1>
                 <p className={`text-[11px] sm:text-sm md:text-base mb-3 sm:mb-8 leading-relaxed ${isLight ? 'text-neutral-600' : 'text-white/60'}`}>Discover, personalise, and receive your complete new outfit before your plans begin.</p>
-                <MagneticButton className={`text-[10px] sm:text-xs tracking-widest px-5 sm:px-8 py-3 sm:py-4 font-mono transition-colors w-full sm:w-auto min-h-[40px] sm:min-h-[44px] ${isLight ? 'bg-neutral-900 text-white hover:bg-neutral-800' : 'bg-white text-black hover:bg-neutral-200'}`}>EXPLORE OUTFITS ↓</MagneticButton>
+                <MagneticButton onClick={() => document.getElementById('shop')?.scrollIntoView({ behavior: 'smooth' })} className={`text-[10px] sm:text-xs tracking-widest px-5 sm:px-8 py-3 sm:py-4 font-mono transition-colors w-full sm:w-auto min-h-[40px] sm:min-h-[44px] ${isLight ? 'bg-neutral-900 text-white hover:bg-neutral-800' : 'bg-white text-black hover:bg-neutral-200'}`}>EXPLORE OUTFITS ↓</MagneticButton>
               </motion.div>
 
               {/* Ch 2 */}

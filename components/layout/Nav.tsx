@@ -110,7 +110,6 @@ export function Nav() {
             {[
               { label: 'HOW IT WORKS', href: '#how-it-works' },
               { label: 'SHOP', href: '#shop' },
-              { label: 'OUTFIT CURATOR', href: '#stylist' },
             ].map((item) => (
               <motion.a
                 key={item.label}
