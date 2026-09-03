@@ -3,6 +3,9 @@ import '@/styles/globals.css';
 import { AppProvider } from '@/components/providers/AppProvider';
 import { ScrollProvider } from '@/components/providers/ScrollProvider';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: 'Kya Pehnu? — New Outfit Under 60 Minutes',
   description: 'Discover your next look and get your new outfit delivered in under 60 minutes with Kya Pehnu?',
