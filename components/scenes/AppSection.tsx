@@ -35,30 +35,28 @@ export function AppSection() {
           Browse, style, and order from anywhere in Nagpur. Your 60-minute delivery clock starts the moment you tap.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
-          {IOS_APP_DOWNLOAD_LINK ? (
+          {IOS_APP_DOWNLOAD_LINK && (
             <a href={IOS_APP_DOWNLOAD_LINK} className={`text-xs tracking-widest px-6 py-3.5 font-mono border transition-colors min-h-[44px] flex items-center justify-center ${
               isLight ? 'border-neutral-900 text-neutral-900 hover:bg-neutral-900 hover:text-white' : 'border-white text-white hover:bg-white hover:text-black'
             }`}>
               APP STORE
             </a>
-          ) : (
-            <button disabled className={`text-xs tracking-widest px-6 py-3.5 font-mono border cursor-not-allowed min-h-[44px] flex items-center justify-center ${
-              isLight ? 'border-neutral-300 text-neutral-400' : 'border-white/20 text-white/30'
-            }`}>
-              COMING SOON
-            </button>
           )}
-          {ANDROID_APP_DOWNLOAD_LINK ? (
+          {ANDROID_APP_DOWNLOAD_LINK && (
             <a href={ANDROID_APP_DOWNLOAD_LINK} className={`text-xs tracking-widest px-6 py-3.5 font-mono border transition-colors min-h-[44px] flex items-center justify-center ${
               isLight ? 'border-neutral-900 text-neutral-900 hover:bg-neutral-900 hover:text-white' : 'border-white text-white hover:bg-white hover:text-black'
             }`}>
               GOOGLE PLAY
             </a>
-          ) : (
-            <button disabled className={`text-xs tracking-widest px-6 py-3.5 font-mono border cursor-not-allowed min-h-[44px] flex items-center justify-center ${
-              isLight ? 'border-neutral-300 text-neutral-400' : 'border-white/20 text-white/30'
+          )}
+          {!IOS_APP_DOWNLOAD_LINK && !ANDROID_APP_DOWNLOAD_LINK && (
+            <button disabled className={`text-xs tracking-widest px-6 py-3.5 font-mono border rounded-lg cursor-not-allowed min-h-[44px] flex items-center justify-center gap-2 ${
+              isLight
+                ? 'border-purple-300 text-purple-800 bg-purple-50/70'
+                : 'border-purple-400/30 text-purple-300 bg-purple-500/10'
             }`}>
-              COMING SOON
+              <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
+              <span>APP COMING SOON — IOS & ANDROID</span>
             </button>
           )}
         </div>
