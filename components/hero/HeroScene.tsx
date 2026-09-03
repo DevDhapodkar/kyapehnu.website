@@ -1,23 +1,19 @@
 'use client';
-import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 
-const ThreeViewer = dynamic(
-  () => import('@/components/three/ThreeViewer').then((m) => m.ThreeViewer),
-  { ssr: false }
-);
+import { ParallaxHeroViewer } from './ParallaxHeroViewer';
 
 interface HeroSceneProps {
-  modelPath: string | null;
+  modelPath?: string | null;
 }
 
 export function HeroScene({ modelPath }: HeroSceneProps) {
   return (
     <section id="hero" className="glass-bg relative w-full h-screen overflow-hidden" style={{ background: '#050508' }}>
-      <ThreeViewer
-        modelPath={modelPath}
+      <ParallaxHeroViewer
         className="absolute inset-0 w-full h-full"
+        imageSrc="/images/hero-model.jpg"
       />
       {/* Hero copy overlay */}
       <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-16 pointer-events-none">
