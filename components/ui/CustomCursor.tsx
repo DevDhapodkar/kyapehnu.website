@@ -6,8 +6,12 @@ import { gsap } from '@/lib/gsap';
 export function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
-  const { theme } = useApp();
+  const { theme, introState } = useApp();
+
   const isLight = theme === 'light';
+  const isIntro = introState !== 'hero';
+  // Use dark cursor ONLY when in Light theme AND inside main hero/site (not during black intro screens)
+  const useDarkCursor = isLight && !isIntro;
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -50,14 +54,14 @@ export function CustomCursor() {
         ref={dotRef}
         aria-hidden="true"
         className={`fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2 hidden lg:block transition-colors duration-300 ${
-          isLight ? 'bg-neutral-950' : 'bg-white'
+          useDarkCursor ? 'bg-neutral-950' : 'bg-white'
         }`}
       />
       <div
         ref={ringRef}
         aria-hidden="true"
         className={`fixed top-0 left-0 w-9 h-9 border rounded-full pointer-events-none z-[9998] -translate-x-1/2 -translate-y-1/2 hidden lg:block transition-colors duration-300 ${
-          isLight ? 'border-neutral-900/70 bg-purple-500/5' : 'border-white/60 bg-white/5'
+          useDarkCursor ? 'border-neutral-900/70 bg-purple-500/5' : 'border-white/70 bg-white/10'
         }`}
       />
     </>
