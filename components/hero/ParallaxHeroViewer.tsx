@@ -145,7 +145,7 @@ export function ParallaxHeroViewer({
             </div>
           </motion.div>
 
-          {/* Bottom-Left Tag: AI Match Confidence */}
+          {/* Bottom-Left Tag: Curated Match Confidence */}
           <motion.div
             className="absolute bottom-6 left-6 z-30 pointer-events-none"
             style={{
@@ -156,7 +156,7 @@ export function ParallaxHeroViewer({
           >
             <div className="flex flex-col gap-0.5 px-4 py-2.5 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 text-white shadow-xl">
               <span className="text-[10px] font-mono tracking-widest text-white/50 uppercase">
-                AI STYLIST MATCH
+                CURATED LOOK MATCH
               </span>
               <span className="text-sm font-semibold tracking-tight text-white flex items-center gap-1.5">
                 ✦ 99.4% FIT CONFIDENCE

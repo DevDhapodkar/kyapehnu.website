@@ -25,7 +25,7 @@ export function Scene04AIStylist() {
 
   return (
     <section id="stylist" className="min-h-screen bg-neutral-950 px-8 md:px-16 py-24">
-      <p className="text-white/30 text-xs tracking-[0.5em] font-mono mb-8">04 / AI STYLIST</p>
+      <p className="text-white/30 text-xs tracking-[0.5em] font-mono mb-8">04 / OUTFIT CURATOR</p>
       <h2 className="text-white text-4xl md:text-5xl font-thin tracking-tight mb-4">WHERE ARE YOU GOING?</h2>
       <p className="text-white/40 text-sm mb-12">Tell us your destination and style. We&apos;ll build your look.</p>
 
