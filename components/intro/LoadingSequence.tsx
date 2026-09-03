@@ -43,6 +43,15 @@ export function LoadingSequence({ onComplete }: LoadingSequenceProps) {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.4 }}
     >
+      {/* Skip Intro Button */}
+      <button
+        onClick={onComplete}
+        className="absolute top-6 right-6 font-mono text-xs tracking-[0.25em] text-white/50 hover:text-white px-4 py-2 rounded-full border border-white/15 hover:border-white/40 bg-white/5 backdrop-blur-md transition-all cursor-pointer"
+        aria-label="Skip intro animation"
+      >
+        SKIP INTRO ➔
+      </button>
+
       <p className="font-mono text-white/30 text-xs tracking-[0.5em] mb-8">KYA PEHNU?</p>
       <div className="w-48 h-px bg-white/10 relative overflow-hidden">
         <motion.div

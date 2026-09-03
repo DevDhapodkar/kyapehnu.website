@@ -35,6 +35,14 @@ export function CinematicIntro({ onEnter }: CinematicIntroProps) {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.8 }}
     >
+      {/* Skip Intro Button */}
+      <button
+        onClick={onEnter}
+        className="absolute top-6 right-6 font-mono text-xs tracking-[0.25em] text-white/50 hover:text-white px-4 py-2 rounded-full border border-white/15 hover:border-white/40 bg-white/5 backdrop-blur-md transition-all cursor-pointer z-50"
+        aria-label="Skip intro sequence"
+      >
+        SKIP INTRO ➔
+      </button>
       <AnimatePresence mode="wait">
         <motion.p
           key={step}
