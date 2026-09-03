@@ -131,7 +131,7 @@ export function ScrollytellingHero({ className = '' }: ScrollytellingHeroProps) 
                   FAST. DIRECT.<br />TO YOUR DOOR.
                 </h2>
                 <p className="text-white/60 text-sm md:text-base leading-relaxed">
-                  No standard 3-day shipping. Your outfit is dispatched instantly by local express couriers.
+                  Delivering across Dharampeth, Sadar, Sitabuldi, IT Park, and all of Nagpur in under 60 minutes.
                 </p>
               </motion.div>
 
@@ -204,7 +204,7 @@ export function ScrollytellingHero({ className = '' }: ScrollytellingHeroProps) 
               >
                 <div className="px-3 py-1.5 rounded-full bg-black/75 backdrop-blur-md border border-white/20 text-white font-mono text-[10px] tracking-wider shadow-lg flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping" />
-                  <span>60 MIN EXPRESS</span>
+                  <span>60 MINS IN NAGPUR</span>
                 </div>
               </motion.div>
 
@@ -213,7 +213,7 @@ export function ScrollytellingHero({ className = '' }: ScrollytellingHeroProps) 
                 style={{ opacity: tagOpacity }}
               >
                 <div className="px-3.5 py-2 rounded-xl bg-white/10 backdrop-blur-xl border border-white/20 text-white font-mono text-[11px] tracking-wider shadow-xl flex items-center gap-1.5">
-                  <span>✦ CURATED FIT</span>
+                  <span>✦ NAGPUR EDITION</span>
                 </div>
               </motion.div>
             </motion.div>
