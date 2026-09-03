@@ -236,7 +236,7 @@ export function ScrollytellingHero({ className = '' }: ScrollytellingHeroProps) 
               {/* Primary Authentic Indian Fashion Model Image */}
               <div className="relative w-full h-full bg-neutral-900">
                 <Image
-                  src="/images/indian-hero-model-v3.jpg"
+                  src="/images/nagpur-indian-model-v4.jpg"
                   alt="Kya Pehnu Authentic Indian Fashion Model"
                   fill
                   sizes="(max-width: 768px) 90vw, 45vw"
@@ -250,7 +250,7 @@ export function ScrollytellingHero({ className = '' }: ScrollytellingHeroProps) 
                   style={{ opacity: imageAltOpacity }}
                 >
                   <Image
-                    src="/images/indian-shopping-v3.jpg"
+                    src="/images/nagpur-indian-outfit-v4.jpg"
                     alt="Kya Pehnu Authentic Indian Fashion Outfit"
                     fill
                     sizes="(max-width: 768px) 90vw, 45vw"
