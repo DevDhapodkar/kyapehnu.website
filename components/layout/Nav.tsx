@@ -1,40 +1,90 @@
 'use client';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useApp } from '@/components/providers/AppProvider';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 
 export function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useApp();
+
+  const isLight = theme === 'light';
 
   return (
     <>
       <nav
-        className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-6 py-4"
+        className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-6 py-4 transition-colors duration-300"
         style={{
-          background: 'rgba(0,0,0,0.3)',
+          background: isLight ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0.4)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
-          borderBottom: '1px solid rgba(255,255,255,0.06)',
+          borderBottom: isLight ? '1px solid rgba(15,23,42,0.08)' : '1px solid rgba(255,255,255,0.08)',
         }}
       >
-        <a href="/" className="text-white font-mono text-sm tracking-[0.2em]">KYA PEHNU?</a>
-        <div className="hidden md:flex gap-8 text-white/70 text-xs tracking-widest">
-          <a href="#how-it-works" className="hover:text-white transition-colors">HOW IT WORKS</a>
-          <a href="#shop" className="hover:text-white transition-colors">SHOP</a>
+        <a
+          href="/"
+          className={`font-mono text-sm tracking-[0.2em] transition-colors ${
+            isLight ? 'text-neutral-900' : 'text-white'
+          }`}
+        >
+          KYA PEHNU?
+        </a>
+
+        <div className="hidden md:flex items-center gap-8 text-xs tracking-widest font-mono">
+          <a
+            href="#how-it-works"
+            className={`transition-colors ${
+              isLight ? 'text-neutral-600 hover:text-neutral-900' : 'text-white/70 hover:text-white'
+            }`}
+          >
+            HOW IT WORKS
+          </a>
+          <a
+            href="#shop"
+            className={`transition-colors ${
+              isLight ? 'text-neutral-600 hover:text-neutral-900' : 'text-white/70 hover:text-white'
+            }`}
+          >
+            SHOP
+          </a>
         </div>
-        <MagneticButton
-          className="hidden md:block bg-white text-black text-xs tracking-widest px-5 py-2 font-mono hover:bg-neutral-200 transition-colors"
-          onClick={() => {}}
-        >
-          GET THE APP
-        </MagneticButton>
-        <button
-          className="md:hidden text-white text-xs tracking-widest"
-          onClick={() => setMenuOpen(true)}
-          aria-label="Open menu"
-        >
-          MENU
-        </button>
+
+        <div className="flex items-center gap-4">
+          {/* Theme Toggle Button */}
+          <button
+            onClick={toggleTheme}
+            className={`px-3.5 py-1.5 rounded-full font-mono text-[11px] tracking-wider border transition-all duration-300 flex items-center gap-1.5 cursor-pointer ${
+              isLight
+                ? 'bg-neutral-900 text-white border-neutral-900 hover:bg-neutral-800'
+                : 'bg-white/10 text-white border-white/20 hover:bg-white/20'
+            }`}
+            aria-label="Toggle light and dark theme"
+          >
+            <span>{isLight ? '🌙' : '☀️'}</span>
+            <span className="hidden sm:inline">{isLight ? 'DARK' : 'LIGHT'}</span>
+          </button>
+
+          <MagneticButton
+            className={`hidden md:block text-xs tracking-widest px-5 py-2 font-mono transition-colors ${
+              isLight
+                ? 'bg-neutral-900 text-white hover:bg-neutral-800'
+                : 'bg-white text-black hover:bg-neutral-200'
+            }`}
+            onClick={() => {}}
+          >
+            GET THE APP
+          </MagneticButton>
+
+          <button
+            className={`md:hidden text-xs tracking-widest font-mono ${
+              isLight ? 'text-neutral-900' : 'text-white'
+            }`}
+            onClick={() => setMenuOpen(true)}
+            aria-label="Open menu"
+          >
+            MENU
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>
@@ -43,10 +93,14 @@ export function Nav() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center gap-8"
+            className={`fixed inset-0 z-50 flex flex-col items-center justify-center gap-8 ${
+              isLight ? 'bg-white text-neutral-900' : 'bg-black text-white'
+            }`}
           >
             <button
-              className="absolute top-5 right-6 text-white/50 text-xs tracking-widest"
+              className={`absolute top-5 right-6 text-xs tracking-widest font-mono ${
+                isLight ? 'text-neutral-400' : 'text-white/50'
+              }`}
               onClick={() => setMenuOpen(false)}
               aria-label="Close menu"
             >
@@ -60,7 +114,7 @@ export function Nav() {
               <motion.a
                 key={item.label}
                 href={item.href}
-                className="text-white text-2xl tracking-[0.3em] font-thin hover:text-white/80 transition-colors"
+                className="text-2xl tracking-[0.3em] font-thin hover:opacity-70 transition-opacity"
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: 20, opacity: 0 }}

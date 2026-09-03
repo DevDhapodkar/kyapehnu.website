@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { AnimatePresence, motion, useInView } from 'framer-motion';
+import { useApp } from '@/components/providers/AppProvider';
 import { appScreens } from '@/data/appScreens';
 import { siteConfig } from '@/config/site.config';
 
@@ -8,6 +9,8 @@ export function AppSection() {
   const [active, setActive] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { amount: 0.5 });
+  const { theme } = useApp();
+  const isLight = theme === 'light';
 
   useEffect(() => {
     if (!inView) return;
@@ -18,31 +21,43 @@ export function AppSection() {
   const { IOS_APP_DOWNLOAD_LINK, ANDROID_APP_DOWNLOAD_LINK } = siteConfig;
 
   return (
-    <section className="min-h-screen bg-neutral-950 flex flex-col md:flex-row items-center justify-center gap-16 px-8 md:px-16 py-24">
+    <section className={`min-h-screen flex flex-col md:flex-row items-center justify-center gap-16 px-8 md:px-16 py-24 transition-colors duration-400 ${
+      isLight ? 'bg-[#f8f9fa] text-neutral-900' : 'bg-neutral-950 text-white'
+    }`}>
       <div className="flex-1 max-w-md">
-        <p className="text-white/30 text-xs tracking-[0.5em] font-mono mb-8">THE APP</p>
-        <h2 className="text-white text-4xl md:text-5xl font-thin tracking-tight mb-6">
+        <p className={`text-xs tracking-[0.5em] font-mono mb-8 ${isLight ? 'text-neutral-500' : 'text-white/30'}`}>
+          THE APP
+        </p>
+        <h2 className={`text-4xl md:text-5xl font-thin tracking-tight mb-6 ${isLight ? 'text-neutral-950' : 'text-white'}`}>
           FASHION IN<br />YOUR POCKET.
         </h2>
-        <p className="text-white/50 text-base mb-12 leading-relaxed">
-          Browse, style, and order from anywhere. Your 60-minute clock starts the moment you tap.
+        <p className={`text-base mb-12 leading-relaxed ${isLight ? 'text-neutral-600' : 'text-white/50'}`}>
+          Browse, style, and order from anywhere in Nagpur. Your 60-minute delivery clock starts the moment you tap.
         </p>
         <div className="flex gap-4">
           {IOS_APP_DOWNLOAD_LINK ? (
-            <a href={IOS_APP_DOWNLOAD_LINK} className="border border-white text-white text-xs tracking-widest px-6 py-3 font-mono hover:bg-white hover:text-black transition-colors">
+            <a href={IOS_APP_DOWNLOAD_LINK} className={`text-xs tracking-widest px-6 py-3 font-mono border transition-colors ${
+              isLight ? 'border-neutral-900 text-neutral-900 hover:bg-neutral-900 hover:text-white' : 'border-white text-white hover:bg-white hover:text-black'
+            }`}>
               APP STORE
             </a>
           ) : (
-            <button disabled className="border border-white/20 text-white/30 text-xs tracking-widest px-6 py-3 font-mono cursor-not-allowed">
+            <button disabled className={`text-xs tracking-widest px-6 py-3 font-mono border cursor-not-allowed ${
+              isLight ? 'border-neutral-300 text-neutral-400' : 'border-white/20 text-white/30'
+            }`}>
               COMING SOON
             </button>
           )}
           {ANDROID_APP_DOWNLOAD_LINK ? (
-            <a href={ANDROID_APP_DOWNLOAD_LINK} className="border border-white text-white text-xs tracking-widest px-6 py-3 font-mono hover:bg-white hover:text-black transition-colors">
+            <a href={ANDROID_APP_DOWNLOAD_LINK} className={`text-xs tracking-widest px-6 py-3 font-mono border transition-colors ${
+              isLight ? 'border-neutral-900 text-neutral-900 hover:bg-neutral-900 hover:text-white' : 'border-white text-white hover:bg-white hover:text-black'
+            }`}>
               GOOGLE PLAY
             </a>
           ) : (
-            <button disabled className="border border-white/20 text-white/30 text-xs tracking-widest px-6 py-3 font-mono cursor-not-allowed">
+            <button disabled className={`text-xs tracking-widest px-6 py-3 font-mono border cursor-not-allowed ${
+              isLight ? 'border-neutral-300 text-neutral-400' : 'border-white/20 text-white/30'
+            }`}>
               COMING SOON
             </button>
           )}
@@ -52,7 +67,9 @@ export function AppSection() {
       {/* Phone mockup */}
       <div ref={ref} className="flex-shrink-0">
         <div
-          className="w-56 md:w-64 h-[480px] md:h-[540px] rounded-3xl border border-white/20 overflow-hidden relative"
+          className={`w-56 md:w-64 h-[480px] md:h-[540px] rounded-3xl border overflow-hidden relative shadow-2xl ${
+            isLight ? 'border-neutral-300 bg-white' : 'border-white/20 bg-black'
+          }`}
           style={{ transform: 'perspective(1000px) rotateY(-8deg) rotateX(3deg)' }}
         >
           <AnimatePresence mode="wait">
@@ -65,9 +82,9 @@ export function AppSection() {
               exit={{ x: -30, opacity: 0 }}
               transition={{ duration: 0.4 }}
             >
-              <p className="text-white/30 text-xs font-mono mb-4 tracking-widest">KYA PEHNU?</p>
+              <p className="text-white/40 text-xs font-mono mb-4 tracking-widest">KYA PEHNU?</p>
               <p className="text-white text-lg font-thin text-center mb-3">{appScreens[active].title}</p>
-              <p className="text-white/50 text-xs text-center">{appScreens[active].description}</p>
+              <p className="text-white/60 text-xs text-center">{appScreens[active].description}</p>
             </motion.div>
           </AnimatePresence>
           {/* Notch */}

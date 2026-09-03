@@ -1,48 +1,108 @@
+'use client';
+import { useApp } from '@/components/providers/AppProvider';
 import { siteConfig } from '@/config/site.config';
 
 export function Footer() {
   const { FOOTER_LINKS, SOCIAL_INSTAGRAM, SOCIAL_LINKEDIN, SOCIAL_X } = siteConfig;
+  const { theme } = useApp();
+  const isLight = theme === 'light';
 
   return (
-    <footer className="bg-black text-white border-t border-white/10 pt-16 pb-8 px-6 md:px-12">
+    <footer className={`border-t pt-16 pb-8 px-6 md:px-12 transition-colors duration-400 ${
+      isLight ? 'bg-white text-neutral-900 border-neutral-200' : 'bg-black text-white border-white/10'
+    }`}>
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-16 font-mono">
           <div>
-            <p className="font-mono text-base tracking-[0.3em] mb-6">KYA PEHNU?</p>
-            <p className="text-white/40 text-sm leading-relaxed">New outfit.<br />Under 60 minutes.</p>
+            <p className="font-mono text-base tracking-[0.3em] mb-6 font-bold">KYA PEHNU?</p>
+            <p className={`text-sm leading-relaxed ${isLight ? 'text-neutral-500' : 'text-white/40'}`}>
+              New outfit.<br />Under 60 minutes in Nagpur.
+            </p>
           </div>
           <div>
-            <p className="text-xs tracking-widest text-white/40 mb-5">EXPLORE</p>
+            <p className={`text-xs tracking-widest mb-5 ${isLight ? 'text-neutral-400' : 'text-white/40'}`}>EXPLORE</p>
             {Object.entries(FOOTER_LINKS.explore).map(([k, v]) => (
-              <a key={k} href={v} className="block text-sm text-white/60 hover:text-white mb-3 capitalize transition-colors">
+              <a
+                key={k}
+                href={v}
+                className={`block text-sm mb-3 capitalize transition-colors ${
+                  isLight ? 'text-neutral-600 hover:text-neutral-950' : 'text-white/60 hover:text-white'
+                }`}
+              >
                 {k.replace(/([A-Z])/g, ' $1')}
               </a>
             ))}
           </div>
           <div>
-            <p className="text-xs tracking-widest text-white/40 mb-5">COMPANY</p>
+            <p className={`text-xs tracking-widest mb-5 ${isLight ? 'text-neutral-400' : 'text-white/40'}`}>COMPANY</p>
             {Object.entries(FOOTER_LINKS.company).map(([k, v]) => (
-              <a key={k} href={v} className="block text-sm text-white/60 hover:text-white mb-3 capitalize transition-colors">
+              <a
+                key={k}
+                href={v}
+                className={`block text-sm mb-3 capitalize transition-colors ${
+                  isLight ? 'text-neutral-600 hover:text-neutral-950' : 'text-white/60 hover:text-white'
+                }`}
+              >
                 {k}
               </a>
             ))}
           </div>
           <div>
-            <p className="text-xs tracking-widest text-white/40 mb-5">HELP</p>
+            <p className={`text-xs tracking-widest mb-5 ${isLight ? 'text-neutral-400' : 'text-white/40'}`}>HELP</p>
             {Object.entries(FOOTER_LINKS.help).map(([k, v]) => (
-              <a key={k} href={v} className="block text-sm text-white/60 hover:text-white mb-3 capitalize transition-colors">
+              <a
+                key={k}
+                href={v}
+                className={`block text-sm mb-3 capitalize transition-colors ${
+                  isLight ? 'text-neutral-600 hover:text-neutral-950' : 'text-white/60 hover:text-white'
+                }`}
+              >
                 {k}
               </a>
             ))}
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 border-t border-white/10 pt-8">
-          <p className="text-white/30 text-xs">© 2026 Kya Pehnu? All rights reserved.</p>
+        <div className={`flex flex-col md:flex-row items-center justify-between gap-6 border-t pt-8 ${
+          isLight ? 'border-neutral-200' : 'border-white/10'
+        }`}>
+          <p className={`text-xs ${isLight ? 'text-neutral-500' : 'text-white/30'}`}>
+            © 2026 Kya Pehnu? All rights reserved.
+          </p>
           <div className="flex gap-6">
-            <a href={SOCIAL_INSTAGRAM} target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white text-xs tracking-widest transition-colors" aria-label="Instagram">INSTAGRAM</a>
-            <a href={SOCIAL_X} target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white text-xs tracking-widest transition-colors" aria-label="X (Twitter)">X</a>
-            <a href={SOCIAL_LINKEDIN} target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white text-xs tracking-widest transition-colors" aria-label="LinkedIn">LINKEDIN</a>
+            <a
+              href={SOCIAL_INSTAGRAM}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`text-xs tracking-widest transition-colors font-mono ${
+                isLight ? 'text-neutral-500 hover:text-neutral-950' : 'text-white/40 hover:text-white'
+              }`}
+              aria-label="Instagram"
+            >
+              INSTAGRAM
+            </a>
+            <a
+              href={SOCIAL_X}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`text-xs tracking-widest transition-colors font-mono ${
+                isLight ? 'text-neutral-500 hover:text-neutral-950' : 'text-white/40 hover:text-white'
+              }`}
+              aria-label="X (Twitter)"
+            >
+              X
+            </a>
+            <a
+              href={SOCIAL_LINKEDIN}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`text-xs tracking-widest transition-colors font-mono ${
+                isLight ? 'text-neutral-500 hover:text-neutral-950' : 'text-white/40 hover:text-white'
+              }`}
+              aria-label="LinkedIn"
+            >
+              LINKEDIN
+            </a>
           </div>
         </div>
       </div>
