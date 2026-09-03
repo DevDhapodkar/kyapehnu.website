@@ -1,0 +1,79 @@
+'use client';
+import { useState, useEffect, useRef } from 'react';
+import { AnimatePresence, motion, useInView } from 'framer-motion';
+import { appScreens } from '@/data/appScreens';
+import { siteConfig } from '@/config/site.config';
+
+export function AppSection() {
+  const [active, setActive] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { amount: 0.5 });
+
+  useEffect(() => {
+    if (!inView) return;
+    const interval = setInterval(() => setActive((a) => (a + 1) % appScreens.length), 2500);
+    return () => clearInterval(interval);
+  }, [inView]);
+
+  const { IOS_APP_DOWNLOAD_LINK, ANDROID_APP_DOWNLOAD_LINK } = siteConfig;
+
+  return (
+    <section className="min-h-screen bg-neutral-950 flex flex-col md:flex-row items-center justify-center gap-16 px-8 md:px-16 py-24">
+      <div className="flex-1 max-w-md">
+        <p className="text-white/30 text-xs tracking-[0.5em] font-mono mb-8">THE APP</p>
+        <h2 className="text-white text-4xl md:text-5xl font-thin tracking-tight mb-6">
+          FASHION IN<br />YOUR POCKET.
+        </h2>
+        <p className="text-white/50 text-base mb-12 leading-relaxed">
+          Browse, style, and order from anywhere. Your 60-minute clock starts the moment you tap.
+        </p>
+        <div className="flex gap-4">
+          {IOS_APP_DOWNLOAD_LINK ? (
+            <a href={IOS_APP_DOWNLOAD_LINK} className="border border-white text-white text-xs tracking-widest px-6 py-3 font-mono hover:bg-white hover:text-black transition-colors">
+              APP STORE
+            </a>
+          ) : (
+            <button disabled className="border border-white/20 text-white/30 text-xs tracking-widest px-6 py-3 font-mono cursor-not-allowed">
+              COMING SOON
+            </button>
+          )}
+          {ANDROID_APP_DOWNLOAD_LINK ? (
+            <a href={ANDROID_APP_DOWNLOAD_LINK} className="border border-white text-white text-xs tracking-widest px-6 py-3 font-mono hover:bg-white hover:text-black transition-colors">
+              GOOGLE PLAY
+            </a>
+          ) : (
+            <button disabled className="border border-white/20 text-white/30 text-xs tracking-widest px-6 py-3 font-mono cursor-not-allowed">
+              COMING SOON
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Phone mockup */}
+      <div ref={ref} className="flex-shrink-0">
+        <div
+          className="w-56 md:w-64 h-[480px] md:h-[540px] rounded-3xl border border-white/20 overflow-hidden relative"
+          style={{ transform: 'perspective(1000px) rotateY(-8deg) rotateX(3deg)' }}
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active}
+              className="absolute inset-0 flex flex-col items-center justify-center p-6"
+              style={{ background: appScreens[active].bgColor }}
+              initial={{ x: 30, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: -30, opacity: 0 }}
+              transition={{ duration: 0.4 }}
+            >
+              <p className="text-white/30 text-xs font-mono mb-4 tracking-widest">KYA PEHNU?</p>
+              <p className="text-white text-lg font-thin text-center mb-3">{appScreens[active].title}</p>
+              <p className="text-white/50 text-xs text-center">{appScreens[active].description}</p>
+            </motion.div>
+          </AnimatePresence>
+          {/* Notch */}
+          <div className="absolute top-3 left-1/2 -translate-x-1/2 w-16 h-1.5 bg-black/60 rounded-full z-10" />
+        </div>
+      </div>
+    </section>
+  );
+}
