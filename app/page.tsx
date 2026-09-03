@@ -8,7 +8,6 @@ import { HeroScene } from '@/components/hero/HeroScene';
 import { Nav } from '@/components/layout/Nav';
 import { Footer } from '@/components/layout/Footer';
 import { CustomCursor } from '@/components/ui/CustomCursor';
-import { SoundController } from '@/components/ui/SoundController';
 import { Scene01Problem } from '@/components/scenes/Scene01Problem';
 import { Scene02Solution } from '@/components/scenes/Scene02Solution';
 import { Scene03Vibe } from '@/components/scenes/Scene03Vibe';
@@ -41,7 +40,6 @@ export default function HomePage() {
   return (
     <>
       <CustomCursor />
-      <SoundController />
 
       <AnimatePresence mode="wait">
         {introState === 'loading' && (
