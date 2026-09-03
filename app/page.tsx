@@ -43,7 +43,11 @@ export default function HomePage() {
 
       <AnimatePresence mode="wait">
         {introState === 'loading' && (
-          <LoadingSequence key="loading" onComplete={() => setIntroState('hero')} />
+          <LoadingSequence
+            key="loading"
+            onComplete={() => setIntroState('intro')}
+            onSkip={() => setIntroState('hero')}
+          />
         )}
         {introState === 'intro' && (
           <CinematicIntro key="intro" onEnter={() => setIntroState('hero')} />

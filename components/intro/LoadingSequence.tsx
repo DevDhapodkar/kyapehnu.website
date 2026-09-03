@@ -4,19 +4,28 @@ import { motion } from 'framer-motion';
 
 interface LoadingSequenceProps {
   onComplete: () => void;
+  onSkip?: () => void;
 }
 
-export function LoadingSequence({ onComplete }: LoadingSequenceProps) {
+export function LoadingSequence({ onComplete, onSkip }: LoadingSequenceProps) {
   const [progress, setProgress] = useState(0);
   const rafRef = useRef<number | null>(null);
   const startRef = useRef<number | null>(null);
+
+  const handleSkip = () => {
+    if (onSkip) {
+      onSkip();
+    } else {
+      onComplete();
+    }
+  };
 
   useEffect(() => {
     // Fake progress that caps at 90%, jumps to 100 on completion
     function tick(ts: number) {
       if (!startRef.current) startRef.current = ts;
       const elapsed = ts - startRef.current;
-      const fake = Math.min(90, (elapsed / 4000) * 90);
+      const fake = Math.min(90, (elapsed / 3000) * 90);
       setProgress(Math.round(fake));
       if (fake < 90) {
         rafRef.current = requestAnimationFrame(tick);
@@ -24,12 +33,12 @@ export function LoadingSequence({ onComplete }: LoadingSequenceProps) {
     }
     rafRef.current = requestAnimationFrame(tick);
 
-    // Hard timeout at 5s — jump to 100 and proceed
+    // Timeout to complete loading and proceed to cinematic intro
     const timeout = setTimeout(() => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       setProgress(100);
-      setTimeout(onComplete, 400);
-    }, 5000);
+      setTimeout(onComplete, 350);
+    }, 3500);
 
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
@@ -43,9 +52,9 @@ export function LoadingSequence({ onComplete }: LoadingSequenceProps) {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.4 }}
     >
-      {/* Skip Intro Button optimized for mobile touch */}
+      {/* Skip Intro Button */}
       <button
-        onClick={onComplete}
+        onClick={handleSkip}
         className="absolute top-4 right-4 sm:top-6 sm:right-6 font-mono text-[10px] sm:text-xs tracking-[0.25em] text-white/70 hover:text-white px-3.5 py-2.5 rounded-full border border-white/20 hover:border-white/50 bg-white/10 backdrop-blur-md transition-all cursor-pointer min-h-[44px] flex items-center justify-center"
         aria-label="Skip intro animation"
       >
