@@ -52,17 +52,21 @@ export function Nav() {
             >
               CLOSE
             </button>
-            {['HOW IT WORKS', 'SHOP', 'GET THE APP'].map((item) => (
+            {[
+              { label: 'HOW IT WORKS', href: '#how-it-works' },
+              { label: 'SHOP', href: '#shop' },
+              { label: 'OUTFIT CURATOR', href: '#stylist' },
+            ].map((item) => (
               <motion.a
-                key={item}
-                href="#"
-                className="text-white text-2xl tracking-[0.3em] font-thin"
+                key={item.label}
+                href={item.href}
+                className="text-white text-2xl tracking-[0.3em] font-thin hover:text-white/80 transition-colors"
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: 20, opacity: 0 }}
                 onClick={() => setMenuOpen(false)}
               >
-                {item}
+                {item.label}
               </motion.a>
             ))}
           </motion.div>
