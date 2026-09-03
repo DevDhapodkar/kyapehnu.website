@@ -39,14 +39,14 @@ export function LoadingSequence({ onComplete }: LoadingSequenceProps) {
 
   return (
     <motion.div
-      className="fixed inset-0 bg-black flex flex-col items-center justify-center z-[100]"
+      className="fixed inset-0 bg-black flex flex-col items-center justify-center z-[100] p-4"
       exit={{ opacity: 0 }}
       transition={{ duration: 0.4 }}
     >
-      {/* Skip Intro Button */}
+      {/* Skip Intro Button optimized for mobile touch */}
       <button
         onClick={onComplete}
-        className="absolute top-6 right-6 font-mono text-xs tracking-[0.25em] text-white/50 hover:text-white px-4 py-2 rounded-full border border-white/15 hover:border-white/40 bg-white/5 backdrop-blur-md transition-all cursor-pointer"
+        className="absolute top-4 right-4 sm:top-6 sm:right-6 font-mono text-[10px] sm:text-xs tracking-[0.25em] text-white/70 hover:text-white px-3.5 py-2.5 rounded-full border border-white/20 hover:border-white/50 bg-white/10 backdrop-blur-md transition-all cursor-pointer min-h-[44px] flex items-center justify-center"
         aria-label="Skip intro animation"
       >
         SKIP INTRO ➔

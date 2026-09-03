@@ -21,41 +21,41 @@ export function AppSection() {
   const { IOS_APP_DOWNLOAD_LINK, ANDROID_APP_DOWNLOAD_LINK } = siteConfig;
 
   return (
-    <section className={`min-h-screen flex flex-col md:flex-row items-center justify-center gap-16 px-8 md:px-16 py-24 transition-colors duration-400 ${
+    <section className={`min-h-screen flex flex-col md:flex-row items-center justify-center gap-12 sm:gap-16 px-5 sm:px-8 md:px-16 py-16 sm:py-24 transition-colors duration-400 ${
       isLight ? 'bg-[#f8f9fa] text-neutral-900' : 'bg-neutral-950 text-white'
     }`}>
-      <div className="flex-1 max-w-md">
-        <p className={`text-xs tracking-[0.5em] font-mono mb-8 ${isLight ? 'text-neutral-500' : 'text-white/30'}`}>
+      <div className="flex-1 max-w-md text-center md:text-left">
+        <p className={`text-xs tracking-[0.5em] font-mono mb-6 sm:mb-8 ${isLight ? 'text-purple-700 font-semibold' : 'text-purple-300'}`}>
           THE APP
         </p>
-        <h2 className={`text-4xl md:text-5xl font-thin tracking-tight mb-6 ${isLight ? 'text-neutral-950' : 'text-white'}`}>
+        <h2 className={`text-3xl sm:text-4xl md:text-5xl font-thin tracking-tight mb-4 sm:mb-6 ${isLight ? 'text-neutral-950' : 'text-white'}`}>
           FASHION IN<br />YOUR POCKET.
         </h2>
-        <p className={`text-base mb-12 leading-relaxed ${isLight ? 'text-neutral-600' : 'text-white/50'}`}>
+        <p className={`text-xs sm:text-base mb-8 sm:mb-12 leading-relaxed ${isLight ? 'text-neutral-600' : 'text-white/60'}`}>
           Browse, style, and order from anywhere in Nagpur. Your 60-minute delivery clock starts the moment you tap.
         </p>
-        <div className="flex gap-4">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
           {IOS_APP_DOWNLOAD_LINK ? (
-            <a href={IOS_APP_DOWNLOAD_LINK} className={`text-xs tracking-widest px-6 py-3 font-mono border transition-colors ${
+            <a href={IOS_APP_DOWNLOAD_LINK} className={`text-xs tracking-widest px-6 py-3.5 font-mono border transition-colors min-h-[44px] flex items-center justify-center ${
               isLight ? 'border-neutral-900 text-neutral-900 hover:bg-neutral-900 hover:text-white' : 'border-white text-white hover:bg-white hover:text-black'
             }`}>
               APP STORE
             </a>
           ) : (
-            <button disabled className={`text-xs tracking-widest px-6 py-3 font-mono border cursor-not-allowed ${
+            <button disabled className={`text-xs tracking-widest px-6 py-3.5 font-mono border cursor-not-allowed min-h-[44px] flex items-center justify-center ${
               isLight ? 'border-neutral-300 text-neutral-400' : 'border-white/20 text-white/30'
             }`}>
               COMING SOON
             </button>
           )}
           {ANDROID_APP_DOWNLOAD_LINK ? (
-            <a href={ANDROID_APP_DOWNLOAD_LINK} className={`text-xs tracking-widest px-6 py-3 font-mono border transition-colors ${
+            <a href={ANDROID_APP_DOWNLOAD_LINK} className={`text-xs tracking-widest px-6 py-3.5 font-mono border transition-colors min-h-[44px] flex items-center justify-center ${
               isLight ? 'border-neutral-900 text-neutral-900 hover:bg-neutral-900 hover:text-white' : 'border-white text-white hover:bg-white hover:text-black'
             }`}>
               GOOGLE PLAY
             </a>
           ) : (
-            <button disabled className={`text-xs tracking-widest px-6 py-3 font-mono border cursor-not-allowed ${
+            <button disabled className={`text-xs tracking-widest px-6 py-3.5 font-mono border cursor-not-allowed min-h-[44px] flex items-center justify-center ${
               isLight ? 'border-neutral-300 text-neutral-400' : 'border-white/20 text-white/30'
             }`}>
               COMING SOON
@@ -67,10 +67,10 @@ export function AppSection() {
       {/* Phone mockup */}
       <div ref={ref} className="flex-shrink-0">
         <div
-          className={`w-56 md:w-64 h-[480px] md:h-[540px] rounded-3xl border overflow-hidden relative shadow-2xl ${
+          className={`w-48 sm:w-56 md:w-64 h-[420px] sm:h-[480px] md:h-[540px] rounded-3xl border overflow-hidden relative shadow-2xl ${
             isLight ? 'border-neutral-300 bg-white' : 'border-white/20 bg-black'
           }`}
-          style={{ transform: 'perspective(1000px) rotateY(-8deg) rotateX(3deg)' }}
+          style={{ transform: 'perspective(1000px) rotateY(-6deg) rotateX(2deg)' }}
         >
           <AnimatePresence mode="wait">
             <motion.div
@@ -83,12 +83,12 @@ export function AppSection() {
               transition={{ duration: 0.4 }}
             >
               <p className="text-white/40 text-xs font-mono mb-4 tracking-widest">KYA PEHNU?</p>
-              <p className="text-white text-lg font-thin text-center mb-3">{appScreens[active].title}</p>
+              <p className="text-white text-base sm:text-lg font-thin text-center mb-3">{appScreens[active].title}</p>
               <p className="text-white/60 text-xs text-center">{appScreens[active].description}</p>
             </motion.div>
           </AnimatePresence>
           {/* Notch */}
-          <div className="absolute top-3 left-1/2 -translate-x-1/2 w-16 h-1.5 bg-black/60 rounded-full z-10" />
+          <div className="absolute top-3 left-1/2 -translate-x-1/2 w-14 sm:w-16 h-1.5 bg-black/60 rounded-full z-10" />
         </div>
       </div>
     </section>

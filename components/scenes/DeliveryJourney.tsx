@@ -37,22 +37,22 @@ export function DeliveryJourney() {
   return (
     <section
       ref={ref}
-      className={`h-screen flex flex-col items-center justify-center px-8 transition-colors duration-400 ${
+      className={`h-screen flex flex-col items-center justify-center px-4 sm:px-8 transition-colors duration-400 ${
         isLight ? 'bg-[#f8f9fa] text-neutral-900' : 'bg-black text-white'
       }`}
     >
-      <p className={`text-xs tracking-[0.5em] font-mono mb-12 ${isLight ? 'text-neutral-500' : 'text-white/30'}`}>
+      <p className={`text-xs tracking-[0.5em] font-mono mb-8 sm:mb-12 ${isLight ? 'text-purple-700 font-semibold' : 'text-purple-300'}`}>
         THE JOURNEY
       </p>
-      <div className="flex gap-4 md:gap-8 mb-16">
+      <div className="flex gap-2 sm:gap-6 md:gap-8 mb-10 sm:mb-16 max-w-full overflow-x-auto justify-center">
         {STEPS.map((step, i) => (
           <div
             key={i}
-            className="flex flex-col items-center gap-2 transition-opacity duration-500"
-            style={{ opacity: i <= stepIndex ? 1 : 0.2 }}
+            className="flex flex-col items-center gap-1.5 transition-opacity duration-500 min-w-[55px] text-center"
+            style={{ opacity: i <= stepIndex ? 1 : 0.25 }}
           >
-            <span className="text-2xl">{step.icon}</span>
-            <p className={`text-xs tracking-widest font-mono hidden md:block ${
+            <span className="text-xl sm:text-2xl">{step.icon}</span>
+            <p className={`text-[9px] sm:text-xs tracking-wider font-mono ${
               isLight ? 'text-neutral-900' : 'text-white'
             }`}>
               {step.label}
@@ -60,10 +60,10 @@ export function DeliveryJourney() {
           </div>
         ))}
       </div>
-      <div className="w-full max-w-lg mb-8">
+      <div className="w-full max-w-lg mb-6 sm:mb-8 px-2">
         <DeliveryMap progress={rideProgress} />
       </div>
-      <p className={`text-sm text-center font-mono ${isLight ? 'text-neutral-600' : 'text-white/60'}`}>
+      <p className={`text-xs sm:text-sm text-center font-mono max-w-md ${isLight ? 'text-neutral-600' : 'text-white/60'}`}>
         {STEPS[stepIndex].desc}
       </p>
     </section>
