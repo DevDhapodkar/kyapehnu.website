@@ -21,6 +21,22 @@ const nextConfig: NextConfig = {
         source: '/audio/:path*',
         headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
       },
+      {
+        source: '/app/_expo/:path*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
+    ];
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/app',
+        destination: '/app/index.html',
+      },
+      {
+        source: '/app/:path((?!_expo|assets|favicon\\.ico|manifest\\.json|apple-touch-icon\\.png).*)',
+        destination: '/app/index.html',
+      },
     ];
   },
 };

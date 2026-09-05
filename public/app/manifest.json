@@ -1,0 +1,17 @@
+{
+  "short_name": "Kya Pehnu",
+  "name": "Kya Pehnu? — New Outfit Under 60 Minutes",
+  "description": "Hyper-local 60-minute fashion delivery in Nagpur.",
+  "icons": [
+    {
+      "src": "/app/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": "/app",
+  "background_color": "#050506",
+  "theme_color": "#050506",
+  "display": "standalone",
+  "orientation": "portrait"
+}
