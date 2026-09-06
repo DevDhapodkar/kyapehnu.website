@@ -21,8 +21,8 @@
     }
   ],
   "start_url": "/app",
-  "background_color": "#050506",
-  "theme_color": "#050506",
+  "background_color": "#FAF9F5",
+  "theme_color": "#FAF9F5",
   "display": "standalone",
   "orientation": "portrait"
 }
