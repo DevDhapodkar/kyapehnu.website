@@ -128,3 +128,40 @@ body {
   border-width: 0;
 }
 
+/* ─── Mobile Native App Illusion & Gesture Hardening ─────────────── */
+*, *::before, *::after {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+html, body {
+  touch-action: manipulation;
+  overscroll-behavior: none;
+  overscroll-behavior-y: none;
+  overscroll-behavior-x: none;
+}
+
+/* Prevent accidental text selection on interactive chrome while preserving readability */
+button, nav, header, footer, a, [role="button"] {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+input, textarea, select, [contenteditable="true"] {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* Prevent iOS Safari auto-zoom on field focus */
+@media screen and (max-width: 768px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Prevent ghost image dragging */
+img, a {
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import '@/styles/globals.css';
 import { AppProvider } from '@/components/providers/AppProvider';
 import { ScrollProvider } from '@/components/providers/ScrollProvider';
@@ -6,9 +6,29 @@ import { ScrollProvider } from '@/components/providers/ScrollProvider';
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: 'cover',
+  themeColor: '#FAF9F5',
+};
+
 export const metadata: Metadata = {
   title: 'Kya Pehnu? — New Outfit Under 60 Minutes',
   description: 'Discover your next look and get your new outfit delivered in under 60 minutes with Kya Pehnu?',
+  formatDetection: {
+    telephone: false,
+    date: false,
+    address: false,
+    email: false,
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Kya Pehnu?',
+  },
   openGraph: {
     title: 'Kya Pehnu? — New Outfit Under 60 Minutes',
     description: 'Discover your next look and get your new outfit delivered in under 60 minutes.',
