@@ -35,7 +35,7 @@ const nextConfig: NextConfig = {
       },
       {
         key: 'Content-Security-Policy',
-        value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: blob: https://images.unsplash.com https://res.cloudinary.com https: http:; connect-src 'self' https: http: ws: wss:; frame-ancestors 'self'; object-src 'none';",
+        value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://apis.google.com https://*.googleapis.com https://*.firebaseapp.com https://accounts.google.com https://unpkg.com https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: blob: https://images.unsplash.com https://res.cloudinary.com https://lh3.googleusercontent.com https://*.googleusercontent.com https: http:; frame-src 'self' https://kyapehnushop.firebaseapp.com https://*.firebaseapp.com https://accounts.google.com; connect-src 'self' https: http: ws: wss: https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://*.googleapis.com https://*.firebaseio.com https://*.firebaseapp.com https://accounts.google.com; frame-ancestors 'self'; object-src 'none';",
       },
     ];
 
@@ -64,6 +64,10 @@ const nextConfig: NextConfig = {
   },
   async rewrites() {
     return [
+      {
+        source: '/__/auth/:path*',
+        destination: 'https://kyapehnushop.firebaseapp.com/__/auth/:path*',
+      },
       {
         source: '/app',
         destination: '/app/index.html',
