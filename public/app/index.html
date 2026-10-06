@@ -33,6 +33,30 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     <script>
+      (function() {
+        var v = "1791266257013";
+        try {
+          var last = localStorage.getItem('__kyapehnu_build_v__');
+          if (last && last !== v) {
+            localStorage.setItem('__kyapehnu_build_v__', v);
+            if ('caches' in window) {
+              caches.keys().then(function(names) {
+                for (var i = 0; i < names.length; i++) { caches.delete(names[i]); }
+              });
+            }
+            if ('serviceWorker' in navigator) {
+              navigator.serviceWorker.getRegistrations().then(function(regs) {
+                for (var r of regs) { r.unregister(); }
+                window.location.reload(true);
+              });
+            } else {
+              window.location.reload(true);
+            }
+            return;
+          }
+          localStorage.setItem('__kyapehnu_build_v__', v);
+        } catch(e) {}
+      })();
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.getRegistrations().then(function(regs) {
           for (var r of regs) { r.unregister(); }
@@ -461,6 +485,6 @@
         <div style="margin-top:6px;font-size:12px;color:#71717A;letter-spacing:0.2px;">Nagpur Fast Fashion &bull; Trending Fits Delivered to Your Doorstep</div>
       </div>
     </div>
-  <script src="/app/_expo/static/js/web/index-9707fef03e1dd264ec1e7f8f35bc3712.js?v=1791263921324" defer></script>
+  <script src="/app/_expo/static/js/web/index-195f8155f2c40c2e89f0927bdfda6a3b.js?v=1791266257013" defer></script>
 </body>
 </html>
