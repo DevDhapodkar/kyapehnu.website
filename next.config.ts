@@ -105,6 +105,20 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: '/admin',
+        destination: 'https://kyapehnu-backend.onrender.com/admin',
+        permanent: false,
+      },
+      {
+        source: '/admin/:path*',
+        destination: 'https://kyapehnu-backend.onrender.com/admin/:path*',
+        permanent: false,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
